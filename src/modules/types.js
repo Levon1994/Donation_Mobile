@@ -1,3 +1,3 @@
-export const BASE_URL = 'https://safeface-back-dev.appelloproject.xyz/api/';
+export const BASE_URL = 'http://ergast.com/api/f1/';
 
-export const USER = 'USER';
+export const DRIVERS = 'DRIVERS';

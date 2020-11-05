@@ -1,19 +1,8 @@
-import AsyncStorage from '@react-native-community/async-storage';
-import { BASE_URL } from '../configs';
-
-const clearAppData = async function() {
-    try {
-        const keys = await AsyncStorage.getAllKeys();
-        await AsyncStorage.multiRemove(keys);
-    } catch (error) {
-        console.error('Error clearing app data.');
-    }
-}
+import { BASE_URL } from '../modules/types';
 
 export default class Fetch {
     static async fetch(options) {
-        const ACCESS_TOKEN = await AsyncStorage.getItem('token');
-        const { headers, method, body, path, data, withAuthToken, verify } = options;
+        const { headers, method, body, path, data} = options;
 
         let requestOptions = {
             headers: {
@@ -23,10 +12,6 @@ export default class Fetch {
             method,
             redirect: 'follow',
         };
-
-        if(withAuthToken) {
-            requestOptions.headers['Authorization'] = `Bearer ${ACCESS_TOKEN}`;
-        }
 
         if (body) {
             requestOptions.headers['Content-Type'] = 'application/json';
@@ -38,10 +23,6 @@ export default class Fetch {
         const response = await fetch(new Request(`${BASE_URL}${path}`, requestOptions))
         .then(res => res.json())
         .then(res => res);
-
-        if ((response?.detail || response?.token) && verify) {
-            clearAppData();
-        }
 
         return response;
     }

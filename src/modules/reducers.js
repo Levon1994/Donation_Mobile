@@ -1,20 +1,13 @@
 import createReducer from '../helpers/createReducer';
 import { combineReducers } from 'redux';
 import {
-  USER,
+  DRIVERS,
 } from './types';
 
-const user = (state = false, action) => {
-  switch (action.type) {
-    case USER:
-      return action.payload;
-    default:
-      return state;
-  };
-};
+const drivers = createReducer(DRIVERS);
 
 const rootReducer = combineReducers({
-  user,
+  drivers,
 });
 
 export default rootReducer;

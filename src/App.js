@@ -1,14 +1,17 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-
 import {
   SafeAreaView,
   Dimensions,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import store from './stores';
 
-import { PublicScreen } from './screens';
+import { Home } from './screens';
+
+const Stack = createStackNavigator();
 
 const App = () => {
   const fullWidth = Dimensions.get('window').width;
@@ -17,11 +20,20 @@ const App = () => {
   return (
     <Provider store={store}>
       <SafeAreaView style={{ 
+        padding: 10,
         width: fullWidth,
         height: fullHeight, 
         backgroundColor: '#f0f0f0',
       }}>
-        <PublicScreen/>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen 
+              name="Home" 
+              component={Home} 
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+      </NavigationContainer>
       </SafeAreaView>
     </Provider>
   );

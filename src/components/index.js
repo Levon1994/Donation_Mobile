@@ -1,9 +1,9 @@
-import LoginComponent from './LoginComponent';
-import ButtonComponent from './ButtonComponent';
-import WelcomeComponent from './WelcomeComponent';
+import Card from './Card';
+import Loader from './Loader';
+import Pagination from './Pagination';
 
 export {
-  LoginComponent,
-  ButtonComponent,
-  WelcomeComponent,
+  Card,
+  Loader,
+  Pagination,
 };

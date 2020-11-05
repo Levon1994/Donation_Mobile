@@ -1,5 +1,5 @@
-import PublicScreen from './PublicScreen';
+import Home from './Home';
 
 export {
-  PublicScreen,
+  Home,
 };

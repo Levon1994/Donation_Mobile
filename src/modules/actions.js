@@ -1,13 +1,13 @@
 import CreateActionCreator  from '../helpers/createActionCreator';
 import {
-  USER,
+  DRIVERS,
 } from './types';
 
-const toggleDarkMode = (user) => ({
-  type: USER,
-  payload: user
+const getDrivers = (offset = 0, limit = 10) => CreateActionCreator.read({
+  path: `drivers.json?limit=${limit}&offset=${offset}`,
+  type: DRIVERS,
 });
 
 export {
-  toggleDarkMode
+  getDrivers,
 };
